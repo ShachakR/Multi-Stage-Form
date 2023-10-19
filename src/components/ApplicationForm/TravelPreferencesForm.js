@@ -36,6 +36,7 @@ const TravelPreferencesForm = forwardRef((props, ref) => {
           label={"Departure Date *"}
           name={"departDate"}
           value={departDate}
+          minDate={dayjs()}
           onChange={(date) => {
             handleChange({ target: { name: "departDate", value: dayjs(date) } });
           }}
