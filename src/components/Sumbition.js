@@ -14,7 +14,7 @@ const Submition = ({ formData }) => {
         </Grid>
         <Grid item xs={6}>
           <Typography variant="subtitle1">Date of Birth:</Typography>
-          <Typography variant="body1">{formData.dateOfBirth.toLocaleDateString("en-US")}</Typography>
+          <Typography variant="body1">{formData.dateOfBirth.format("MM/DD/YYYY")}</Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="subtitle1">Nationality:</Typography>
@@ -31,13 +31,13 @@ const Submition = ({ formData }) => {
         <Grid item xs={6}>
           <Typography variant="subtitle1">Departure Date:</Typography>
           <Typography variant="body1">
-            {formData.departDate.toLocaleDateString("en-US")}
+            {formData.departDate.format("MM/DD/YYYY")}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="subtitle1">Return Date:</Typography>
           <Typography variant="body1">
-            {formData.returnDate.toLocaleDateString("en-US")}
+            {formData.returnDate.format("MM/DD/YYYY")}
           </Typography>
         </Grid>
         <Grid item xs={6}>

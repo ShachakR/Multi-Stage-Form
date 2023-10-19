@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import dayjs from 'dayjs';
 import {
   TextField,
   Box,
@@ -36,7 +37,7 @@ const TravelPreferencesForm = forwardRef((props, ref) => {
           name={"departDate"}
           value={departDate}
           onChange={(date) => {
-            handleChange({ target: { name: "departDate", value: new Date(date) } });
+            handleChange({ target: { name: "departDate", value: dayjs(date) } });
           }}
           sx={{ width: "45%" }}
         />
@@ -46,7 +47,7 @@ const TravelPreferencesForm = forwardRef((props, ref) => {
           name={"returnDate"}
           value={returnDate}
           onChange={(date) => {
-            handleChange({ target: { name: "returnDate", value: new Date(date) } });
+            handleChange({ target: { name: "returnDate", value: dayjs(date) } });
           }}
           sx={{ width: "45%" }}
         />

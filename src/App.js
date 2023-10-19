@@ -20,9 +20,20 @@ function App() {
     healthSafetyFormRef,
   ];
 
+
+  function getMaxDate() {
+    const MIN_AGE = 21 
+    const currentYear = new Date().getFullYear();
+    const maxYear = currentYear - MIN_AGE;
+    const maxDate = new Date(maxYear, 0, 1);
+    return dayjs(maxDate);
+  }
+
+  const maxDate = getMaxDate()
+
   const [formData, setFormData] = useState({
     fullName: "",
-    dateOfBirth: "",
+    dateOfBirth: maxDate,
     nationality: "Canada",
     email: "",
     phone: "",
@@ -30,7 +41,7 @@ function App() {
     returnDate: dayjs().add(5, "day"),
     accommodationPref: "Space Hotel",
     specialRequest: "",
-    healthDeclaration: false,
+    healthDeclaration: null,
     emergencyContactName: "",
     emergencyContactPhone: "",
     medicalConditions: "",
@@ -57,7 +68,7 @@ function App() {
   };
 
   const handleSubmit = () => {
-    if (formData.healthDeclaration === false) {
+    if (formData.healthDeclaration !== "on") {
       setError("Must agree to health declaration");
     } else {
       setError(false);
@@ -69,6 +80,7 @@ function App() {
     <PersonalInfoForm
       formData={formData}
       handleChange={handleChange}
+      maxDate={maxDate}
       ref={personalInfoFormRef}
     />,
     <TravelPreferencesForm

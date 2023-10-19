@@ -47,7 +47,7 @@ const HealthSafetyForm = forwardRef((props, ref) => {
       <Box sx={{ marginBottom: 2 }}>
         <Checkbox
           name="healthDeclaration"
-          checked={healthDeclaration}
+          checked={healthDeclaration === "on" ? true : false}
           onChange={handleChange}
         />
         I agree to the health declaration.

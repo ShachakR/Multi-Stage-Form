@@ -5,10 +5,10 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const PersonalInfoForm = forwardRef((props, ref) => {
   const { formData, handleChange } = props;
-  const { fullName, dateOfBirth, nationality, email, phone } = formData;
+  const { fullName, dateOfBirth, nationality, email, phone, maxDate } = formData;
 
   const dateChange = (date) => {
-    handleChange({ target: { name: "dateOfBirth", value: new Date(date) } });
+    handleChange({ target: { name: "dateOfBirth", value: dayjs(date) } });
   }
 
   const handleNationalityChange = (e) => {
@@ -17,14 +17,6 @@ const PersonalInfoForm = forwardRef((props, ref) => {
     });
   };
 
-  const MIN_AGE = 21 
-
-  function getMaxDate() {
-    const currentYear = new Date().getFullYear();
-    const maxYear = currentYear - MIN_AGE;
-    const maxDate = new Date(maxYear, 0, 1);
-    return dayjs(maxDate);
-  }
 
   return (
     <form ref={ref}>
@@ -42,9 +34,9 @@ const PersonalInfoForm = forwardRef((props, ref) => {
       <DatePicker
         label={"Date of Birth *"}
         name={"dateOfBirth"}
-        value={dateOfBirth === "" ? getMaxDate() : dateOfBirth}
+        value={dateOfBirth}
         onChange={dateChange}
-        maxDate={getMaxDate()}
+        maxDate={maxDate}
         fullWidth
         sx={{ marginBottom: 2, width: "100%" }}
       />
