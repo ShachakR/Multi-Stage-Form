@@ -1,6 +1,6 @@
 # Multi-Stage Mars Visit Application Form
 
-**Test out the live build [here](https://fun-games-online.herokuapp.com/)**
+**Test out the live build [here](https://master--marsapplicationform.netlify.app/)**
 
 # SETUP
 1. Clone the git repository. In Git Bash run ```$ git clone https://github.com/ShachakR/Multi-Stage-Form.git``` or manually download the files
