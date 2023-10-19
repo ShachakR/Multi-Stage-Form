@@ -1,6 +1,14 @@
 import React, { useState, useRef } from "react";
 import dayjs from "dayjs";
-import { Stepper, Step, StepLabel, Button, Box, Alert, Paper } from "@mui/material";
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  Button,
+  Box,
+  Alert,
+  Paper,
+} from "@mui/material";
 import PersonalInfoForm from "./components/ApplicationForm/PersonalInfoForm";
 import TravelPreferencesForm from "./components/ApplicationForm/TravelPreferencesForm";
 import HealthSafetyForm from "./components/ApplicationForm/HealthSafetyForm";
@@ -20,16 +28,15 @@ function App() {
     healthSafetyFormRef,
   ];
 
-
   function getMaxDate() {
-    const MIN_AGE = 21 
+    const MIN_AGE = 21;
     const currentYear = new Date().getFullYear();
     const maxYear = currentYear - MIN_AGE;
     const maxDate = new Date(maxYear, 0, 1);
     return dayjs(maxDate);
   }
 
-  const maxDate = getMaxDate()
+  const maxDate = getMaxDate();
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -70,6 +77,8 @@ function App() {
   const handleSubmit = () => {
     if (formData.healthDeclaration !== "on") {
       setError("Must agree to health declaration");
+    } else if (formData.returnDate.isBefore(formData.departDate)) {
+      setError("Return date must be after departure date");
     } else {
       setError(false);
       setSubmited(true);
@@ -105,7 +114,8 @@ function App() {
         backgroundColor: "#bdc3c7",
       }}
     >
-      <Paper elevation={3}
+      <Paper
+        elevation={3}
         sx={{
           borderRadius: 5,
           p: 5,

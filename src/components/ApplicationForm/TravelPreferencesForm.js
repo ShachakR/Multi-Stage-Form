@@ -49,6 +49,9 @@ const TravelPreferencesForm = forwardRef((props, ref) => {
           onChange={(date) => {
             handleChange({ target: { name: "returnDate", value: dayjs(date) } });
           }}
+          shouldDisableDate={(date) => {
+            return dayjs(date).isBefore(departDate)
+          }}
           sx={{ width: "45%" }}
         />
       </Box>
