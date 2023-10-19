@@ -4,8 +4,8 @@ import { TextField, FormControl, InputLabel, Select, MenuItem,  } from "@mui/mat
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const PersonalInfoForm = forwardRef((props, ref) => {
-  const { formData, handleChange } = props;
-  const { fullName, dateOfBirth, nationality, email, phone, maxDate } = formData;
+  const { formData, handleChange, maxDate } = props;
+  const { fullName, dateOfBirth, nationality, email, phone } = formData;
 
   const dateChange = (date) => {
     handleChange({ target: { name: "dateOfBirth", value: dayjs(date) } });
@@ -38,6 +38,11 @@ const PersonalInfoForm = forwardRef((props, ref) => {
         onChange={dateChange}
         maxDate={maxDate}
         fullWidth
+        slotProps={{
+          textField: {
+            helperText: 'Ages 21+',
+          },
+        }}
         sx={{ marginBottom: 2, width: "100%" }}
       />
 
