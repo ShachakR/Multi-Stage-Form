@@ -28,7 +28,7 @@ const TravelPreferencesForm = forwardRef((props, ref) => {
           flexDirection: "row",
           width: "100%",
           marginBottom: 2,
-          justifyContent: "space-between", // Align items to the left and right
+          justifyContent: "space-between",
         }}
       >
         <DatePicker

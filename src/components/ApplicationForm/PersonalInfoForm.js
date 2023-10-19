@@ -22,7 +22,7 @@ const PersonalInfoForm = forwardRef((props, ref) => {
   function getMaxDate() {
     const currentYear = new Date().getFullYear();
     const maxYear = currentYear - MIN_AGE;
-    const maxDate = new Date(maxYear, 0, 1); // December 31 of maxYear
+    const maxDate = new Date(maxYear, 0, 1);
     return dayjs(maxDate);
   }
 
